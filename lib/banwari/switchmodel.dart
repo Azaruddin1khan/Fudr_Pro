@@ -60,6 +60,7 @@ class _SwitchModelState extends State<SwitchModel> {
             const Text(
               "Scan the QR code to place order",
               style: TextStyle(
+                  height: 2.5,
                   fontSize: 15,
                   fontWeight: FontWeight.w500,
                   color: Colors.black54),

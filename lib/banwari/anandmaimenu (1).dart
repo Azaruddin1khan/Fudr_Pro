@@ -346,27 +346,29 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
         ),
       ),
       appBar: AppBar(
+        backgroundColor: Colors.white,
         bottom: PreferredSize(
             // ignore: sort_child_properties_last
             child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 15),
+              margin: EdgeInsets.symmetric(
+                  horizontal: w * 0.04, vertical: h * 0.01),
               height: h * 0.06,
               // width: w * 0.9,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.grey.shade200),
+                  borderRadius: BorderRadius.circular(25),
+                  color: Colors.grey.withOpacity(0.1)),
               child: TextField(
                   keyboardType: TextInputType.number,
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
                       contentPadding:
-                          const EdgeInsets.only(left: 8, bottom: 10),
+                          EdgeInsets.only(left: w * 0.04, bottom: h * 0.01),
                       hintText: 'Search restaureants',
                       hintStyle:
                           TextStyle(fontSize: 14, color: Colors.grey.shade500),
                       border: InputBorder.none)),
             ),
-            preferredSize: Size.fromHeight(50.0)),
+            preferredSize: Size.fromHeight(40.0)),
         // toolbarHeight: 90,
         elevation: 0,
         title: Column(
@@ -413,12 +415,12 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
         ),
       ),
       drawer: const HomeDrower(),
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: h * 0.02,
-          horizontal: w * 0.04,
-        ),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: h * 0.02,
+            horizontal: w * 0.04,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -1061,6 +1063,18 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                   );
                 },
               ),
+              const Divider(
+                height: 50,
+                thickness: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 25),
+                child: Row(
+                  children: [
+                    Image.asset('assets/powered.png'),
+                  ],
+                ),
+              )
             ],
           ),
         ),

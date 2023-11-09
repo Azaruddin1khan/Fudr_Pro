@@ -106,7 +106,7 @@ class _SelfPickupScreenState extends State<SelfPickupScreen> {
                 width: w * 0.9,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
-                    color: Colors.grey.shade200),
+                    color: Colors.grey.withOpacity(0.1)),
                 child: TextField(
                     cursorColor: Colors.black,
                     decoration: InputDecoration(

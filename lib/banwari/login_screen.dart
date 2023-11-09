@@ -14,6 +14,7 @@ class _LoginScreenState extends State<LoginScreen> {
     double w = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
       child: Container(
+        color: Colors.white,
         padding: EdgeInsets.symmetric(horizontal: w * 0.06, vertical: h * 0.03),
         width: double.infinity,
         // height: double.infinity,
@@ -45,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: h * 0.06,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6),
-                      color: const Color.fromARGB(255, 221, 222, 222)),
+                      color: Colors.grey.withOpacity(0.1)),
                   child: Center(
                       child: Text(
                     '+ 91',
@@ -58,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: w * 0.66,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6),
-                      color: const Color.fromARGB(255, 221, 222, 222)),
+                      color: Colors.grey.withOpacity(0.1)),
                   child: Center(
                     child: TextFormField(
                         keyboardType: TextInputType.number,
@@ -82,18 +83,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontSize: w * 0.033,
                   color: Colors.black.withOpacity(0.5)),
             ),
-            Container(
-              margin: EdgeInsets.only(top: h * 0.034),
-              height: h * 0.055,
-              width: w * 0.96,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  color: const Color.fromARGB(255, 199, 214, 226)),
-              child: Center(
-                  child: Text(
-                'SEND OTP',
-                style: TextStyle(color: Colors.white, fontSize: w * 0.04),
-              )),
+            InkWell(
+              onTap: () {},
+              child: Container(
+                margin: EdgeInsets.only(top: h * 0.034),
+                height: h * 0.055,
+                width: w * 0.96,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    color: Colors.blueAccent.withOpacity(0.2)),
+                child: Center(
+                    child: Text(
+                  'SEND OTP',
+                  style: TextStyle(color: Colors.white, fontSize: w * 0.04),
+                )),
+              ),
             )
           ],
         ),

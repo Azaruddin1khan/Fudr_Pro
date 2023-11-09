@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fudr_project/banwari/login_screen.dart';
 
+import 'about_outlet.dart';
+import 'switchmodel.dart';
+
 class HomeDrower extends StatefulWidget {
   const HomeDrower({super.key});
 
@@ -39,50 +42,69 @@ class _HomeDrowerState extends State<HomeDrower> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: h * 0.03),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: w * 0.06),
-                        child: const Icon(
-                          Icons.restaurant,
-                          color: Color.fromARGB(255, 2, 86, 155),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: w * 0.06),
+                          child: const Icon(
+                            Icons.restaurant,
+                            color: Color.fromARGB(255, 2, 86, 155),
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: w * 0.075),
-                        child: Text(
-                          "Menu",
-                          style: TextStyle(
-                              fontSize: w * 0.04,
-                              fontWeight: FontWeight.w500,
-                              color: const Color.fromARGB(255, 2, 86, 155)),
-                        ),
-                      )
-                    ],
+                        Padding(
+                          padding: EdgeInsets.only(left: w * 0.075),
+                          child: Text(
+                            "Menu",
+                            style: TextStyle(
+                                fontSize: w * 0.04,
+                                fontWeight: FontWeight.w500,
+                                color: const Color.fromARGB(255, 2, 86, 155)),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: h * 0.04),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: w * 0.06),
-                        child: const Icon(
-                          Icons.sync,
-                          color: Color.fromARGB(255, 2, 86, 155),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                      showModalBottomSheet(
+                        isScrollControlled: true,
+                        context: (context),
+                        builder: (context) {
+                          return const SwitchModel();
+                        },
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                      );
+                    },
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: w * 0.06),
+                          child: const Icon(
+                            Icons.sync,
+                            color: Color.fromARGB(255, 2, 86, 155),
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: w * 0.07),
-                        child: Text(
-                          "Switch",
-                          style: TextStyle(
-                              fontSize: w * 0.04,
-                              fontWeight: FontWeight.w500,
-                              color: const Color.fromARGB(255, 2, 86, 155)),
-                        ),
-                      )
-                    ],
+                        Padding(
+                          padding: EdgeInsets.only(left: w * 0.07),
+                          child: Text(
+                            "Switch",
+                            style: TextStyle(
+                                fontSize: w * 0.04,
+                                fontWeight: FontWeight.w500,
+                                color: const Color.fromARGB(255, 2, 86, 155)),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Divider(
@@ -93,10 +115,18 @@ class _HomeDrowerState extends State<HomeDrower> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginScreen()));
+                    Navigator.pop(context);
+                    showModalBottomSheet(
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15))),
+                      isScrollControlled: true,
+                      context: (context),
+                      builder: (context) {
+                        return const LoginScreen();
+                      },
+                    );
                   },
                   child: Row(
                     children: [
@@ -126,26 +156,35 @@ class _HomeDrowerState extends State<HomeDrower> {
                   thickness: w * 0.002,
                   color: Colors.black,
                 ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: w * 0.06),
-                      child: const Icon(
-                        Icons.info_outline,
-                        color: Color.fromARGB(255, 2, 86, 155),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return const AboutOutlet();
+                      },
+                    ));
+                  },
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: w * 0.06),
+                        child: const Icon(
+                          Icons.info_outline,
+                          color: Color.fromARGB(255, 2, 86, 155),
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: w * 0.07),
-                      child: Text(
-                        "About Outlet",
-                        style: TextStyle(
-                            fontSize: w * 0.04,
-                            fontWeight: FontWeight.w500,
-                            color: const Color.fromARGB(255, 2, 86, 155)),
-                      ),
-                    )
-                  ],
+                      Padding(
+                        padding: EdgeInsets.only(left: w * 0.07),
+                        child: Text(
+                          "About Outlet",
+                          style: TextStyle(
+                              fontSize: w * 0.04,
+                              fontWeight: FontWeight.w500,
+                              color: const Color.fromARGB(255, 2, 86, 155)),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ],
             )));
