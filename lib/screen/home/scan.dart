@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fudr_project/banwari/scan_code_screen.dart';
+import 'package:fudr_project/screen/scan_code_screen.dart';
 
 class ScanScreen extends StatefulWidget {
   const ScanScreen({super.key});

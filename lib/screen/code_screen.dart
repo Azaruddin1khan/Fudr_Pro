@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fudr_project/banwari/home_Screen.dart';
-import 'package:fudr_project/banwari/scan_code_screen.dart';
+import 'package:fudr_project/screen/home/home_Screen.dart';
+import 'package:fudr_project/screen/scan_code_screen.dart';
 
 class CodeScreens extends StatefulWidget {
   const CodeScreens({super.key});

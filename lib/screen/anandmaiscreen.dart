@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fudr_project/banwari/anandmaimenu%20(1).dart';
+import 'package:fudr_project/screen/anandmaimenu%20(1).dart';
 
 class Anandmaiscreen extends StatefulWidget {
   const Anandmaiscreen({super.key});

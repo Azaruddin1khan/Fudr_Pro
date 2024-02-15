@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fudr_project/banwari/anandmaiscreen.dart';
+import 'package:fudr_project/screen/anandmaiscreen.dart';
 
 class Splashfudr extends StatefulWidget {
   const Splashfudr({super.key});

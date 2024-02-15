@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fudr_project/banwari/login_screen.dart';
+import 'package:fudr_project/screen/login_screen.dart';
 
 import 'about_outlet.dart';
 import 'switchmodel.dart';

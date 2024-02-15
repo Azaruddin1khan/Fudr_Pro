@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:fudr_project/banwari/drawer.dart';
+import 'dart:developer';
 
-import 'package:fudr_project/banwari/switchmodel.dart';
+import 'package:flutter/material.dart';
+import 'package:fudr_project/screen/drawer.dart';
+
+import 'package:fudr_project/screen/switchmodel.dart';
 
 import 'view_cart.dart';
 
@@ -13,7 +15,6 @@ class MenuAnandmai extends StatefulWidget {
 }
 
 class _MenuAnandmaiState extends State<MenuAnandmai> {
-  // bool isBottombarVisible = false;
   List<Map<String, dynamic>> Recommanded = [
     {
       "title": "Filter Coffee",
@@ -62,45 +63,39 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
       "subtitle": 79,
       "text": "100 ml",
       'counter': 0,
-      // 'isAddVisible': true
     },
     {
       "title": "Cold Coffee",
       "subtitle": 279,
       "text": "300 ml",
       'counter': 0,
-      // 'isAddVisible': true
     },
     {
       "title": "Green Tea",
       "subtitle": 729,
       "text": "100 ml",
       'counter': 0,
-      // 'isAddVisible': true
     },
     {
       "title": "Lemonade",
       "subtitle": 379,
       "text": "250 ml",
       'counter': 0,
-      // 'isAddVisible': true
     },
     {
       "title": "Lemon Iced Tea",
       "subtitle": 792,
       "text": "200 ml",
       'counter': 0,
-      // 'isAddVisible': true
     },
   ];
-  List<Map<dynamic, dynamic>> AllDayBreakfastMenu = [
+  List<Map<dynamic, dynamic>> allDayBreakfastMenu = [
     {
       "title": "2 vegetable cutlets with 2 slices buttered bread",
       "subtitle": 345,
       "text":
           "Our signature bread cutlet features a golden-brown, crispy exterior that gives way to a tender and flavorful center. Crafted...",
       'counter': 0,
-      // 'isAdVisible': true
     },
     {
       "title": "Cheesy Aloo Sandwich",
@@ -108,7 +103,6 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
       "text":
           "Cheesy Aloo Sandwich: Our delectable Cheesy Aloo Sandwich is a mouthwatering delight that combines the richness of potatoes...",
       'counter': 0,
-      // 'isAdVisible': true
     },
     {
       "title": "Classic cheese sandwich",
@@ -116,7 +110,6 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
       "text":
           "Indulge in the ultimate comfort with our Savory Cheese Meltdown—a timeless classic reimagined for your taste buds' delight. Crafted with care and creativity, this delectable...",
       'counter': 0,
-      // 'isAdVisible': true
     },
     {
       "title": "1 Aloo Parantha with curd",
@@ -124,7 +117,6 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
       "text":
           "Our Aloo Paratha is a true labor of love, crafted with utmost care and expertise. A golden-brown, flaky exterior gives way to a sumptuous filling of spiced mashed potatoes, meticulously...",
       'counter': 0,
-      // 'isAdVisible': true
     },
     {
       "title": "Mushroom caramelised onion cream Sandwich",
@@ -132,7 +124,6 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
       "text":
           "Indulge in the rich and savory delight of our Mushroom and Caramelized Onion Cream Sandwich, a culinary masterpiece that",
       'counter': 0,
-      // 'isAdVisible': true
     },
   ];
   List<Map<String, dynamic>> AllDayMealMenu = [
@@ -174,25 +165,13 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
   ];
   // List<Widget> _strings = [];
   int simpleIntInput = 0;
-  // int _counter = 1;
-  // int _count = 1;
 
-  _incrementCounter(index) {
-    // setState(() {
-    // BeverageMenu[index]['counter']++;
-    // });
-  }
+  var totalValue = 0;
+  int itemValue = 0;
 
-  _decrementCounter(index) {
-    // setState(() {
-    //  BeverageMenu[index]['counter']++;
-    // if (BeverageMenu[index]['counter'] > 0) {
-    //   BeverageMenu[index]['counter']--;
-    // } else {
-    //   isAddVisible = !isAddVisible;
-    // }
-    // });
-  }
+  _incrementCounter(index) {}
+
+  _decrementCounter(index) {}
 
   @override
   Widget build(BuildContext context) {
@@ -202,7 +181,7 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
     return Scaffold(
       bottomNavigationBar: Visibility(
         visible: BeverageMenu.any((element) => element["counter"] != 0) ||
-            AllDayBreakfastMenu.any((element) => element["counter"] != 0) ||
+            allDayBreakfastMenu.any((element) => element["counter"] != 0) ||
             Recommanded.any((element) => element["counter"] != 0) ||
             AllDayMealMenu.any((element) => element["counter"] != 0),
         child: Container(
@@ -212,9 +191,9 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                const Text(
-                  '1 item(s) | ₹ 245',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                Text(
+                  '${itemValue.toString()} item(s) | ₹ ${totalValue.toString()}',
+                  style: const TextStyle(fontSize: 18, color: Colors.white),
                 ),
                 Text(
                   " + ${"taxes"}",
@@ -250,7 +229,7 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
         child: FloatingActionButton(
           backgroundColor: const Color(0xff547aa8),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: w * 0.035),
+            padding: EdgeInsets.symmetric(horizontal: w * 0.024),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -348,7 +327,6 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         bottom: PreferredSize(
-            // ignore: sort_child_properties_last
             child: Container(
               margin: EdgeInsets.symmetric(
                   horizontal: w * 0.04, vertical: h * 0.01),
@@ -358,7 +336,6 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                   borderRadius: BorderRadius.circular(25),
                   color: Colors.grey.withOpacity(0.1)),
               child: TextField(
-                  keyboardType: TextInputType.number,
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
                       contentPadding:
@@ -368,8 +345,8 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                           TextStyle(fontSize: 14, color: Colors.grey.shade500),
                       border: InputBorder.none)),
             ),
+            // ignore: prefer_const_constructors
             preferredSize: Size.fromHeight(40.0)),
-        // toolbarHeight: 90,
         elevation: 0,
         title: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -386,7 +363,7 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                       color: Colors.black),
                 ),
                 InkWell(
-                  onTap: () {
+                  onTap: () {   
                     showModalBottomSheet(
                       isScrollControlled: true,
                       context: (context),
@@ -425,7 +402,7 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Recommanded",
+              Text("Recommended",
                   style: TextStyle(
                     fontSize: w * 0.050,
                     fontWeight: FontWeight.w600,
@@ -484,10 +461,11 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                                 ? InkWell(
                                     onTap: () {
                                       Recommanded[index]['counter'] = 1;
-                                      //     !(BeverageMenu[index]
-                                      //         ['isAddVisible']);
-                                      // print(BeverageMenu[index]
-                                      //     ['isAddVisible']);
+                                      totalValue = totalValue +
+                                          Recommanded[index]['subtitle'] as int;
+                                      log(totalValue.toString());
+
+                                      itemValue = itemValue + 1;
                                       setState(() {});
                                     },
                                     child: Container(
@@ -527,9 +505,13 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                                             onTap: () {
                                               setState(() {});
                                               Recommanded[index]['counter']++;
+
+                                              totalValue = totalValue +
+                                                  Recommanded[index]
+                                                      ['subtitle'] as int;
+                                              log(totalValue.toString());
+                                              itemValue = itemValue + 1;
                                             },
-                                            // _incrementCounter(index),
-                                            // padding: EdgeInsets.zero,
                                             child: const Icon(
                                               Icons.add,
                                               color: Colors.white,
@@ -544,20 +526,21 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                                         ),
                                         GestureDetector(
                                             onTap: () {
-                                              setState(() {});
+                                              setState(() {
+                                                if (Recommanded[index]
+                                                        ['counter'] >
+                                                    0) {
+                                                  Recommanded[index]
+                                                      ['counter']--;
+                                                  totalValue = totalValue -
+                                                      Recommanded[index]
+                                                          ["subtitle"] as int;
+                                                  log(totalValue.toString());
 
-                                              if (Recommanded[index]
-                                                      ['counter'] >
-                                                  0) {
-                                                Recommanded[index]['counter']--;
-
-                                                Recommanded[index]
-                                                        ['isAddVisible'] =
-                                                    !Recommanded[index]
-                                                        ['isAddVisible'];
-                                              }
+                                                  itemValue = itemValue - 1;
+                                                }
+                                              });
                                             },
-                                            // padding: EdgeInsets.zero,
                                             child: const Icon(
                                               Icons.remove,
                                               color: Colors.white,
@@ -600,7 +583,6 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                       Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          // mainAxisAlignment: MainAxisAlignment.,
                           children: [
                             Container(
                               margin: const EdgeInsets.only(top: 5),
@@ -643,10 +625,13 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                                 ? InkWell(
                                     onTap: () {
                                       BeverageMenu[index]['counter'] = 1;
-                                      //     !(BeverageMenu[index]
-                                      //         ['isAddVisible']);
-                                      // print(BeverageMenu[index]
-                                      //     ['isAddVisible']);
+                                      totalValue = totalValue +
+                                              BeverageMenu[index]['subtitle']
+                                          as int;
+                                      log(totalValue.toString());
+
+                                      itemValue = itemValue + 1;
+
                                       setState(() {});
                                     },
                                     child: Container(
@@ -686,9 +671,12 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                                             onTap: () {
                                               setState(() {});
                                               BeverageMenu[index]['counter']++;
+                                              totalValue = totalValue +
+                                                  BeverageMenu[index]
+                                                      ['subtitle'] as int;
+                                              log(totalValue.toString());
+                                              itemValue = itemValue + 1;
                                             },
-                                            // _incrementCounter(index),
-                                            // padding: EdgeInsets.zero,
                                             child: const Icon(
                                               Icons.add,
                                               color: Colors.white,
@@ -710,14 +698,14 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                                                   0) {
                                                 BeverageMenu[index]
                                                     ['counter']--;
+                                                totalValue = totalValue -
+                                                    BeverageMenu[index]
+                                                        ["subtitle"] as int;
+                                                log(totalValue.toString());
 
-                                                BeverageMenu[index]
-                                                        ['isAddVisible'] =
-                                                    !BeverageMenu[index]
-                                                        ['isAddVisible'];
+                                                itemValue = itemValue - 1;
                                               }
                                             },
-                                            // padding: EdgeInsets.zero,
                                             child: const Icon(
                                               Icons.remove,
                                               color: Colors.white,
@@ -752,7 +740,7 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                 height: h * 0.02,
               ),
               ListView.builder(
-                itemCount: AllDayBreakfastMenu.length,
+                itemCount: allDayBreakfastMenu.length,
                 physics: const ScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
@@ -783,7 +771,7 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                                   SizedBox(
                                       width: w * 0.5,
                                       child: Text(
-                                        AllDayBreakfastMenu[index]["title"]
+                                        allDayBreakfastMenu[index]["title"]
                                             .toString(),
                                         style: TextStyle(
                                             fontSize: w * 0.045,
@@ -793,7 +781,7 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                                   SizedBox(
                                       width: w * 0.5,
                                       child: Text(
-                                        "₹ ${AllDayBreakfastMenu[index]["subtitle"]}"
+                                        "₹ ${allDayBreakfastMenu[index]["subtitle"]}"
                                             .toString(),
                                         style: TextStyle(fontSize: w * 0.04),
                                       )),
@@ -801,15 +789,17 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                               ),
                             ),
                             const Spacer(),
-                            AllDayBreakfastMenu[index]['counter'] == 0
+                            allDayBreakfastMenu[index]['counter'] == 0
                                 ? InkWell(
                                     onTap: () {
-                                      AllDayBreakfastMenu[index]["counter"] = 1;
-                                      //         ['isAdVisible'] =
-                                      //     !(AllDayBreakfastMenu[index]
-                                      //         ['isAdVisible']);
-                                      // print(AllDayBreakfastMenu[index]
-                                      //     ['isAdVisible']);
+                                      allDayBreakfastMenu[index]["counter"] = 1;
+                                      totalValue = totalValue +
+                                          allDayBreakfastMenu[index]
+                                              ['subtitle'] as int;
+                                      log(totalValue.toString());
+
+                                      itemValue = itemValue + 1;
+
                                       setState(() {});
                                     },
                                     child: Container(
@@ -847,18 +837,21 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                                         GestureDetector(
                                             onTap: () {
                                               setState(() {});
-                                              AllDayBreakfastMenu[index]
+                                              allDayBreakfastMenu[index]
                                                   ['counter']++;
+                                              totalValue = totalValue +
+                                                  allDayBreakfastMenu[index]
+                                                      ['subtitle'] as int;
+                                              log(totalValue.toString());
+                                              itemValue = itemValue + 1;
                                             },
-                                            // _incrementCounter(index),
-                                            // padding: EdgeInsets.zero,
                                             child: const Icon(
                                               Icons.add,
                                               color: Colors.white,
                                               size: 20,
                                             )),
                                         Text(
-                                          "${AllDayBreakfastMenu[index]['counter']}",
+                                          "${allDayBreakfastMenu[index]['counter']}",
                                           style: TextStyle(
                                               fontSize: w * 0.04,
                                               color: Colors.white),
@@ -868,19 +861,19 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                                             onTap: () {
                                               setState(() {});
 
-                                              if (AllDayBreakfastMenu[index]
+                                              if (allDayBreakfastMenu[index]
                                                       ['counter'] >
                                                   0) {
-                                                AllDayBreakfastMenu[index]
+                                                allDayBreakfastMenu[index]
                                                     ['counter']--;
+                                                totalValue = totalValue -
+                                                    allDayBreakfastMenu[index]
+                                                        ["subtitle"] as int;
+                                                log(totalValue.toString());
 
-                                                AllDayBreakfastMenu[index]
-                                                        ['isAddVisible'] =
-                                                    !AllDayBreakfastMenu[index]
-                                                        ['isAddVisible'];
+                                                itemValue = itemValue - 1;
                                               }
                                             },
-                                            // padding: EdgeInsets.zero,
                                             child: const Icon(
                                               Icons.remove,
                                               color: Colors.white,
@@ -893,7 +886,7 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                       Padding(
                         padding: EdgeInsets.only(left: w * 0.08),
                         child: Text(
-                          AllDayBreakfastMenu[index]["text"].toString(),
+                          allDayBreakfastMenu[index]["text"].toString(),
                           style: TextStyle(
                               fontSize: w * 0.035, color: Colors.black54),
                         ),
@@ -967,11 +960,13 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                                 ? InkWell(
                                     onTap: () {
                                       AllDayMealMenu[index]["counter"] = 1;
-                                      //         ['isAdVisible'] =
-                                      //     !(AllDayBreakfastMenu[index]
-                                      //         ['isAdVisible']);
-                                      // print(AllDayBreakfastMenu[index]
-                                      //     ['isAdVisible']);
+                                      totalValue = totalValue +
+                                              AllDayMealMenu[index]['subtitle']
+                                          as int;
+                                      log(totalValue.toString());
+
+                                      itemValue = itemValue + 1;
+
                                       setState(() {});
                                     },
                                     child: Container(
@@ -1011,9 +1006,12 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                                               setState(() {});
                                               AllDayMealMenu[index]
                                                   ['counter']++;
+                                              totalValue = totalValue +
+                                                  AllDayMealMenu[index]
+                                                      ['subtitle'] as int;
+                                              log(totalValue.toString());
+                                              itemValue = itemValue + 1;
                                             },
-                                            // _incrementCounter(index),
-                                            // padding: EdgeInsets.zero,
                                             child: const Icon(
                                               Icons.add,
                                               color: Colors.white,
@@ -1035,14 +1033,14 @@ class _MenuAnandmaiState extends State<MenuAnandmai> {
                                                   0) {
                                                 AllDayMealMenu[index]
                                                     ['counter']--;
+                                                totalValue = totalValue -
+                                                    AllDayMealMenu[index]
+                                                        ["subtitle"] as int;
+                                                log(totalValue.toString());
 
-                                                AllDayMealMenu[index]
-                                                        ['isAddVisible'] =
-                                                    !AllDayMealMenu[index]
-                                                        ['isAddVisible'];
+                                                itemValue = itemValue - 1;
                                               }
                                             },
-                                            // padding: EdgeInsets.zero,
                                             child: const Icon(
                                               Icons.remove,
                                               color: Colors.white,

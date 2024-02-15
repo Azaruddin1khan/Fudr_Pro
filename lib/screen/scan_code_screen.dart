@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fudr_project/banwari/code_screen.dart';
+import 'package:fudr_project/screen/code_screen.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class ScanCodeScreen extends StatefulWidget {

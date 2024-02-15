@@ -14,7 +14,7 @@ class _LoginScreenState extends State<LoginScreen> {
     double w = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
       child: Container(
-        color: Colors.white,
+        // color: Colors.white,
         padding: EdgeInsets.symmetric(horizontal: w * 0.06, vertical: h * 0.03),
         width: double.infinity,
         // height: double.infinity,

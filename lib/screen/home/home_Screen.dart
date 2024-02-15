@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fudr_project/banwari/about_fudr_screen.dart';
-import 'package:fudr_project/banwari/login_screen.dart';
-import 'package:fudr_project/banwari/scan.dart';
-import 'package:fudr_project/banwari/self_pickup_screen.dart';
+import 'package:fudr_project/screen/home/about/about_fudr_screen.dart';
+import 'package:fudr_project/screen/login_screen.dart';
+import 'package:fudr_project/screen/home/scan.dart';
+import 'package:fudr_project/screen/home/self_pickup_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -56,9 +56,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 onTap: () {
                   Navigator.pop(context);
                   showModalBottomSheet(
+                      isScrollControlled: true,
                       context: (context),
                       builder: (context) {
-                        return const LoginScreen();
+                        return Padding(
+                            padding: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom),
+                            child: const LoginScreen());
                       },
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
@@ -142,7 +147,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           DefaultTabController(
             length: 2,
             initialIndex: 0,
-            child: Container(
+            child: SizedBox(
               height: h * 0.05,
               child: TabBar(
                   controller: tabController,

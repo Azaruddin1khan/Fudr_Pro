@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fudr_project/banwari/privacy_policy.dart';
-import 'package:fudr_project/banwari/terms_and_conditions.dart';
+import 'package:fudr_project/screen/home/about/privacy_policy.dart';
+import 'package:fudr_project/screen/home/about/terms_and_conditions.dart';
 
 class AboutScreen extends StatefulWidget {
   const AboutScreen({super.key});

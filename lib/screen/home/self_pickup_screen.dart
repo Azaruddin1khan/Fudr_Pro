@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:fudr_project/banwari/select_city.dart';
-import 'package:fudr_project/banwari/splace_sereen.dart';
-import 'package:fudr_project/banwari/tell_us_bottomsheet.dart';
+import 'package:fudr_project/screen/select_city.dart';
+import 'package:fudr_project/screen/splace_sereen.dart';
+import 'package:fudr_project/screen/tell_us_bottomsheet.dart';
 
 class SelfPickupScreen extends StatefulWidget {
   const SelfPickupScreen({super.key});
